@@ -1,0 +1,28 @@
+.list{
+    width:  60vw;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    background-color: white;
+}
+
+.list>*{
+    border-bottom: 1px solid lightgray;
+}
+
+.list-header{
+    display: flex;
+    padding: .3em 1em .3em 0;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.list-header>span{
+    width: 10rem;
+    color: gray;
+}
+
+.list-header>h4{
+    flex-grow: 1;
+    font-size: 1.5em;
+}

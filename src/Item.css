@@ -1,0 +1,61 @@
+.item{
+    display: flex;
+    padding: 1em;
+}
+
+.item>img:first-child{
+    height: 8em;
+    width: 8em;
+}
+
+.item>.info{
+    flex-grow: 1;
+    margin: 0 1em;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+
+.quantity, .price{
+    width: 10rem;
+}
+
+/* info section style */
+
+.info>:last-child{
+    flex-grow: 1;
+    display: inline-flex;
+    align-items: flex-end;
+}
+
+.title{
+    font-size: 1.6em;
+    font-weight: 500;
+    color: #1566c0;
+    padding-right: .2em;
+}
+
+.in-stock{
+    color: #13a133;
+}
+
+.free-shipping{
+    color: gray;
+}
+
+.delete{
+    color: #1566c0;
+    cursor: pointer;
+}
+
+.price{
+    color: #b12704;
+    font-weight: 600;
+    font-size: 1.6em;
+}
+
+.quantity-select{
+    width: 70%;
+    height: 1.8em;
+    margin-top: .6em;
+}

@@ -1,0 +1,12 @@
+.header{
+    width: 100vw;
+    padding: .5rem;
+    display: flex;
+    justify-content: space-between;
+    background-color: #283442;
+    color: white;
+}
+
+.header>span:first-child{
+    font-weight: 500;
+}
