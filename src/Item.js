@@ -18,9 +18,9 @@ class Item extends React.Component{
     changeQuantity = (e) => {
         const value = parseInt(e.currentTarget.value);
         this.setState({
-            quanitity: value,
-            price: value * this.state.basePrice
-        })
+            price: value * this.state.basePrice,
+            quanitity: value
+        });
     }
 
     render(){
@@ -45,7 +45,7 @@ class Item extends React.Component{
                 </div>
                 <span className="price">${state.price}</span>
                 <div className="quantity">
-                    <select name="quantity" onChange={this.changeQuantity} className="quantity-select" defaultValue={state.quanitity}>
+                    <select name="quantity" onChange={this.changeQuantity} className="quantity-select" value={state.quanitity}>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
