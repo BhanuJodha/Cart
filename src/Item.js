@@ -2,29 +2,9 @@ import React from "react";
 import "./Item.css";
 
 class Item extends React.Component{
-    constructor(){
-        super();
-        this.state = {
-            basePrice: 999.78,
-            price: 999.78,
-            title: "Mobile Phone (iPhone)",
-            provider: "Logitech",
-            inStock: true,
-            freeD: true,
-            quanitity: 1
-        }
-    }
-
-    changeQuantity = (e) => {
-        const value = parseInt(e.currentTarget.value);
-        this.setState({
-            price: value * this.state.basePrice,
-            quanitity: value
-        });
-    }
 
     render(){
-        const state = this.state;
+        const {product: state, changeQuantity} = this.props;
 
         return (
             <div className="item">
@@ -45,7 +25,7 @@ class Item extends React.Component{
                 </div>
                 <span className="price">${state.price}</span>
                 <div className="quantity">
-                    <select name="quantity" onChange={this.changeQuantity} className="quantity-select" value={state.quanitity}>
+                    <select name="quantity" onChange={(e)=>changeQuantity(state, e.currentTarget.value)} className="quantity-select" value={state.quanitity}>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
