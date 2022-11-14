@@ -19,7 +19,7 @@ class List extends React.Component{
                     key: 1
                 },
                 {
-                    basePrice: 56.00,
+                    basePrice: 56.60,
                     price: 56.60,
                     title: "Speakers",
                     provider: "Sony",
@@ -50,6 +50,12 @@ class List extends React.Component{
         });
     }
 
+    deleteHandler = (productRef) => {
+        this.setState({
+            products: this.state.products.filter((e) => e !== productRef)
+        })
+    }
+
     render(){
         return (
             <div className="list">
@@ -59,7 +65,7 @@ class List extends React.Component{
                     <span>Quantity</span>
                 </div>
                 {this.state.products.map((product) => {
-                    return (<Item product={product} changeQuantity={this.changeQuantity} key={product.key}/>)
+                    return (<Item product={product} deleteHandler={this.deleteHandler} changeQuantity={this.changeQuantity} key={product.key}/>)
                 })}
             </div>
         );

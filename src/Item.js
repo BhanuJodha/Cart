@@ -4,7 +4,7 @@ import "./Item.css";
 class Item extends React.Component{
 
     render(){
-        const {product: state, changeQuantity} = this.props;
+        const {product: state, changeQuantity, deleteHandler} = this.props;
 
         return (
             <div className="item">
@@ -20,7 +20,7 @@ class Item extends React.Component{
                     {/* Check for free shipping */}
                     <span className="free-shipping">{state.freeD ? "Elegible" : "Not elegible"} for FREE shipping</span>
                     <div>
-                        <span className="delete">Delete</span>
+                        <span className="delete" onClick={(e) => deleteHandler(state)}>Delete</span>
                     </div>
                 </div>
                 <span className="price">${state.price}</span>
