@@ -1,7 +1,8 @@
 .header{
-    width: 100vw;
+    width: 100%;
     padding: .5rem;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     background-color: #283442;
     color: white;
@@ -9,4 +10,20 @@
 
 .header>span:first-child{
     font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.header>:last-child{
+    font-size: 2rem;
+    position: relative;
+}
+
+.cart-count{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 3px;
+    border-radius: 50%;
+    background-color: #fe8f2e;
+    font-size: .3em;
 }

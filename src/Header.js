@@ -8,6 +8,9 @@ class Header extends React.Component {
                 <span>Amazon</span>
                 <span className="material-symbols-outlined">
                     shopping_cart
+                    <span className="cart-count">
+                        2
+                    </span>
                 </span>
             </nav>
         )
