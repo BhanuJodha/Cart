@@ -3,7 +3,7 @@ import React from "react";
 const Total = (props) => {
     return (
         <div style={style.total}>
-            <span style={style.text}>Subtotal (1 item): <span style={{color:"#b12704"}}>$999.99</span></span>
+            <span style={style.text}>Subtotal ({props.totalItem()} item): <span style={{color:"#b12704"}}>${props.totalPrice()}</span></span>
             <ul style={style.list}>
                 <li>This order contains a gift</li>
             </ul>
