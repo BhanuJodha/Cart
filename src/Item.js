@@ -6,7 +6,7 @@ const Item = (props) => {
 
     return (
         <div className="item">
-            <img src="https://cdn.searchenginejournal.com/wp-content/uploads/2022/06/image-search-1600-x-840-px-62c6dc4ff1eee-sej-1520x800.png" />
+            <img src={state.img} />
             <div className="info">
                 <div>
                     <span className="title">{state.title}</span>
@@ -21,7 +21,7 @@ const Item = (props) => {
                     <span className="delete" onClick={(e) => deleteHandler(state)}>Delete</span>
                 </div>
             </div>
-            <span className="price">${state.price}</span>
+            <span className="price">${state.price.toFixed(2)}</span>
             <div className="quantity">
                 <select name="quantity" onChange={(e) => changeQuantity(state, e.currentTarget.value)} className="quantity-select" value={state.quanitity}>
                     <option value="1">1</option>

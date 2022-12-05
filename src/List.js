@@ -10,6 +10,7 @@ const List = (props) => {
                 <span>Price</span>
                 <span>Quantity</span>
             </div>
+            {props.loading && <h4 style={{textAlign: "center"}}>Loading...</h4>}
             {props.products.map((product) => {
                 return (<Item product={product} deleteHandler={props.deleteHandler} changeQuantity={props.changeQuantity} key={product.key} />)
             })}

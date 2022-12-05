@@ -1,49 +1,39 @@
 import React from "react";
 import Header from "./Header";
 import Body from "./Body";
-import "./App.css"
+import "./App.css";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 class App extends React.Component {
-	constructor(){
+    constructor() {
         super();
 
         this.state = {
-            products: [
-                {
-                    basePrice: 999.78,
-                    price: 999.78,
-                    title: "Mobile Phone (iPhone)",
-                    provider: "Apple",
-                    inStock: true,
-                    freeD: true,
-                    quanitity: 1,
-                    key: 1
-                },
-                {
-                    basePrice: 56.60,
-                    price: 56.60,
-                    title: "Speakers",
-                    provider: "Sony",
-                    inStock: true,
-                    freeD: false,
-                    quanitity: 1,
-                    key: 2
-                },
-                {
-                    basePrice: 1200.00,
-                    price: 1200.00,
-                    title: "Laptop (Macbook air)",
-                    provider: "Apple",
-                    inStock: false,
-                    freeD: true,
-                    quanitity: 1,
-                    key: 3
-                }
-            ]
+            products: [],
+            loading: true
         }
     }
 
-	changeQuantity = (productRef, value) => {
+    // getting data from firebase
+    componentDidMount() {
+        const db = getFirestore(this.props.firebaseApp);
+        const itemsCollection = collection(db, "items");
+        getDocs(itemsCollection).then((docSnap) => {
+            // getting products array
+            const products = docSnap.docs.map(doc => {
+                const data = doc.data();
+                data.key = doc.id;
+                return data;
+            });
+            
+            this.setState({
+                products,
+                loading: false
+            })
+        }).catch((err) => console.log(err))
+    }
+
+    changeQuantity = (productRef, value) => {
         productRef.price = productRef.basePrice * parseInt(value);
         productRef.quanitity = parseInt(value);
         this.setState({
@@ -57,30 +47,30 @@ class App extends React.Component {
         })
     }
 
-	totalItem = () => {
-		let count = 0;
-		this.state.products.forEach((e) => {
-			count += e.quanitity;
-		})
-		return count;
-	}
+    totalItem = () => {
+        let count = 0;
+        this.state.products.forEach((e) => {
+            count += e.quanitity;
+        })
+        return count;
+    }
 
-	totalPrice = () => {
-		let price = 0;
-		this.state.products.forEach((e) => {
-			price += e.price;
-		})
-		return price.toFixed(2);
-	}
+    totalPrice = () => {
+        let price = 0;
+        this.state.products.forEach((e) => {
+            price += e.price;
+        })
+        return price.toFixed(2);
+    }
 
-	render() {
-		return (
-			<div className="App">
-				<Header totalItem={this.totalItem}/>
-				<Body products={this.state.products} changeQuantity={this.changeQuantity} deleteHandler={this.deleteHandler} totalItem={this.totalItem} totalPrice={this.totalPrice}/>
-			</div>
-		);
-	}
+    render() {
+        return (
+            <div className="App">
+                <Header totalItem={this.totalItem} />
+                <Body loading={this.state.loading} products={this.state.products} changeQuantity={this.changeQuantity} deleteHandler={this.deleteHandler} totalItem={this.totalItem} totalPrice={this.totalPrice} />
+            </div>
+        );
+    }
 }
 
 export default App;

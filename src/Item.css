@@ -6,6 +6,7 @@
 .item>img:first-child{
     height: 8em;
     width: 8em;
+    object-fit: contain;
 }
 
 .item>.info{
